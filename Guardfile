@@ -9,7 +9,7 @@ ignore(/node_modules/)
 watch(/.*/) do |file|
   puts "\n" + '=' * 80 + "\n"
   puts "file: #{file[0]}"
-  system "rubocop --auto-correct #{file}"
+  # system "rubocop --auto-correct #{file}"
   puts "\n" + '-' * 80 + "\n"
   system 'ruby *_test.rb'
 end
