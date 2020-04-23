@@ -1,5 +1,8 @@
 require 'minitest/autorun'
+require 'minitest/reporters'
 require_relative 'english_number'
+
+Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new(color: true)]
 
 class ClockTest < Minitest::Test
   def test_english_number
