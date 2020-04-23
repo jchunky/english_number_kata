@@ -1,83 +1,52 @@
-def english_number number
-  if number < 0  # No negative numbers.
-    return 'Please enter a number that isn\'t negative.'
+NUMBERS = {
+  1 => "one",
+  2 => "two",
+  3 => "three",
+  4 => "four",
+  5 => "five",
+  6 => "six",
+  7 => "seven",
+  8 => "eight",
+  9 => "nine",
+  10 => "ten",
+  11 => "eleven",
+  12 => "twelve",
+  13 => "thirteen",
+  14 => "fourteen",
+  15 => "fifteen",
+  16 => "sixteen",
+  17 => "seventeen",
+  18 => "eighteen",
+  19 => "nineteen",
+  20 => "twenty",
+  30 => "thirty",
+  40 => "forty",
+  50 => "fifty",
+  60 => "sixty",
+  70 => "seventy",
+  80 => "eighty",
+  90 => "ninety",
+  100 => "hundred",
+  1_000 => "thousand",
+  1_000_000 => "million",
+  1_000_000_000 => "billion",
+  1_000_000_000_000 => "trillion",
+}
+
+def english_number(n)
+  return "zero" if n == 0
+
+  say_number(n)
+end
+
+def say_number(n)
+  case n
+  when (..20)
+    NUMBERS[n]
+  when (..99)
+    [NUMBERS[n.truncate(-1)], NUMBERS[n % 10]].compact.join("-")
+  else
+    num, word = NUMBERS.select { |num| num <= n }.max
+    [say_number(n / num), word, say_number(n % num)].compact.join(" ")
   end
-  if number == 0
-    return 'zero'
-  end
-
-  # No more special cases! No more returns!
-
-  numString = ''  # This is the string we will return.
-
-  onesPlace = ['one',     'two',       'three',    'four',     'five',
-               'six',     'seven',     'eight',    'nine']
-  tensPlace = ['ten',     'twenty',    'thirty',   'forty',    'fifty',
-               'sixty',   'seventy',   'eighty',   'ninety']
-  teenagers = ['eleven',  'twelve',    'thirteen', 'fourteen', 'fifteen',
-               'sixteen', 'seventeen', 'eighteen', 'nineteen']
-
-  # "left" is how much of the number we still have left to write out.
-  # "write" is the part we are writing out right now.
-  # write and left... get it?  :)
-  left  = number
-  write = left/100          # How many hundreds left to write out?
-  left  = left - write*100  # Subtract off those hundreds.
-
-  if write > 0
-    # Now here's a really sly trick:
-    hundreds  = english_number write
-    numString = numString + hundreds + ' hundred'
-    # That's called "recursion". So what did I just do?
-    # I told this method to call itself, but with "write" instead of
-    # "number". Remember that "write" is (at the moment) the number of
-    # hundreds we have to write out. After we add "hundreds" to
-    # "numString", we add the string ' hundred' after it.
-    # So, for example, if we originally called english_number with
-    # 1999 (so "number" = 1999), then at this point "write" would
-    # be 19, and "left" would be 99. The laziest thing to do at this
-    # point is to have english_number write out the 'nineteen' for us,
-    # then we write out ' hundred', and then the rest of
-    # english_number writes out 'ninety-nine'.
-
-    if left > 0
-      # So we don't write 'two hundredfifty-one'...
-      numString = numString + ' '
-    end
-  end
-
-  write = left/10          # How many tens left to write out?
-  left  = left - write*10  # Subtract off those tens.
-
-  if write > 0
-    if ((write == 1) and (left > 0))
-      # Since we can't write "tenty-two" instead of "twelve",
-      # we have to make a special exception for these.
-      numString = numString + teenagers[left-1]
-      # The "-1" is because teenagers[3] is 'fourteen', not 'thirteen'.
-
-      # Since we took care of the digit in the ones place already,
-      # we have nothing left to write.
-      left = 0
-    else
-      numString = numString + tensPlace[write-1]
-      # The "-1" is because tensPlace[3] is 'forty', not 'thirty'.
-    end
-
-    if left > 0
-      # So we don't write 'sixtyfour'...
-      numString = numString + '-'
-    end
-  end
-
-  write = left  # How many ones left to write out?
-  left  = 0     # Subtract off those ones.
-
-  if write > 0
-    numString = numString + onesPlace[write-1]
-    # The "-1" is because onesPlace[3] is 'four', not 'three'.
-  end
-
-  # Now we just return "numString"...
-  numString
 end
