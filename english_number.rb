@@ -27,10 +27,10 @@ NUMBERS = {
   80 => "eighty",
   90 => "ninety",
   100 => "hundred",
-  1_000 => "thousand",
-  1_000_000 => "million",
-  1_000_000_000 => "billion",
-  1_000_000_000_000 => "trillion",
+  1e3.to_i => "thousand",
+  1e6.to_i => "million",
+  1e9.to_i => "billion",
+  1e12.to_i => "trillion",
 }
 
 def english_number(n)
