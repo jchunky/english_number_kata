@@ -1,7 +1,13 @@
 # guard
 
+ignore(/.bundle/)
+ignore(/.config/)
+ignore(/.gem/)
 ignore(/.git/)
+ignore(/.guard_history/)
 ignore(/.idea/)
+ignore(/.local/)
+ignore(/.node-gyp/)
 ignore(/.rspec_status/)
 ignore(/Gemfile.lock/)
 ignore(/node_modules/)

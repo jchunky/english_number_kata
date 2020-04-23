@@ -48,6 +48,14 @@ Style/CollectionMethods:
   Enabled: true
 
 # New cops
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+Lint/RaiseException:
+  Enabled: true
+Lint/StructNewOverride:
+  Enabled: true
+Style/ExponentialNotation:
+  Enabled: true
 Style/HashEachMethods:
   Enabled: true
 Style/HashTransformKeys:
@@ -64,6 +72,10 @@ Style/Documentation:
   Enabled: false
 Style/EmptyCaseCondition:
   Enabled: false
+Style/FormatString:
+  Enabled: false
+Style/FormatStringToken:
+  Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: false
 Style/ModuleFunction:
@@ -73,6 +85,10 @@ Style/MultilineBlockChain:
 Style/MutableConstant:
   Enabled: false
 Style/NumericPredicate:
+  Enabled: false
+Style/RescueModifier:
+  Enabled: false
+Style/RescueStandardError:
   Enabled: false
 Style/StructInheritance:
   Enabled: false
