@@ -40,15 +40,13 @@ def english_number(n)
 end
 
 def say_number(n)
-  return nil if n.zero?
-
   case n
-  when (100..)
-    num, word = NUMBERS.select { |num, _| num <= n }.max
-    [say_number(n / num), word, say_number(n % num)].compact.join(' ')
-  when (21..)
+  when (..20)
+    NUMBERS[n]
+  when (..99)
     [NUMBERS[n.truncate(-1)], NUMBERS[n % 10]].compact.join('-')
   else
-    NUMBERS[n]
+    num, word = NUMBERS.select { |num, _| num <= n }.max
+    [say_number(n / num), word, say_number(n % num)].compact.join(' ')
   end
 end
