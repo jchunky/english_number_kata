@@ -27,11 +27,11 @@ NUMBERS = {
   80 => "eighty",
   90 => "ninety",
   100 => "hundred",
-  1e3.to_i => "thousand",
-  1e6.to_i => "million",
-  1e9.to_i => "billion",
-  1e12.to_i => "trillion",
-}
+  1e3 => "thousand",
+  1e6 => "million",
+  1e9 => "billion",
+  1e12 => "trillion",
+}.transform_keys(&:to_i)
 
 def english_number(n)
   return "zero" if n == 0
