@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require 'minitest/reporters'
+require "minitest/reporters"
 require_relative 'english_number'
 
 Minitest::Reporters.use!
