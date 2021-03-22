@@ -4,8 +4,8 @@ source "https://rubygems.org"
 gem "activesupport"
 
 # development
-gem "guard"
 gem "rake"
+gem "reek"
 gem "rubocop"
 gem "whats_up"
 
