@@ -27,6 +27,10 @@ NUMBERS = {
   80 => "eighty",
   90 => "ninety",
   100 => "hundred",
+  1000 => "thousand",
+  10**6 => "million",
+  10**9 => "billion",
+  10**12 => "trillion",
 }
 
 def say(n)

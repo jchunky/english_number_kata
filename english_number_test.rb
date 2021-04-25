@@ -17,8 +17,8 @@ class ClockTest < Minitest::Test
     assert_equal "one hundred", english_number(100)
     assert_equal "one hundred one", english_number(101)
     assert_equal "two hundred thirty-four", english_number(234)
-    assert_equal "thirty-two hundred eleven", english_number(3211)
-    assert_equal "ninety-nine hundred ninety-nine hundred ninety-nine", english_number(999_999)
-    assert_equal "one hundred hundred hundred hundred hundred hundred", english_number(1_000_000_000_000)
+    assert_equal "three thousand two hundred eleven", english_number(3211)
+    assert_equal "nine hundred ninety-nine thousand nine hundred ninety-nine", english_number(999_999)
+    assert_equal "one trillion", english_number(1_000_000_000_000)
   end
 end
