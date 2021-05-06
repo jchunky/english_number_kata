@@ -34,17 +34,13 @@ class Integer
     10**12 => "trillion",
   }
 
-  def to_english
-    return "zero" if zero?
+  def english(zero = "zero")
+    return zero if zero?
 
-    say
-  end
-
-  def say
     case self
     when (100..)
-      number, english = NUMBERS.select { |number, _english| number <= self }.max
-      [(self / number).say, english, (self % number).say].compact.join(" ")
+      n, english = NUMBERS.select { |n, _english| n <= self }.max
+      [(self / n).english(nil), english, (self % n).english(nil)].compact.join(" ")
     when (21..)
       [NUMBERS[truncate(-1)], NUMBERS[self % 10]].compact.join("-")
     else
@@ -54,5 +50,5 @@ class Integer
 end
 
 def english_number(number)
-  number.to_english
+  number.english
 end
