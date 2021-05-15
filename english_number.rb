@@ -29,9 +29,13 @@ NUMBERS = {
   100 => "hundred",
 }
 
-def say(number)
-  return nil if number.zero?
+def english_number(number)
+  return "zero" if number.zero?
 
+  say(number)
+end
+
+def say(number)
   case number
   when (..20)
     NUMBERS[number]
@@ -39,12 +43,7 @@ def say(number)
     [NUMBERS[number.truncate(-1)], NUMBERS[number % 10]].compact.join("-")
   else
     n, word = NUMBERS.select { |n, _word| n <= number }.max
-    [say(number / n), word, say(number % n)].compact.join(" ")
+    quotient, remainder = number.divmod(n)
+    [say(quotient), word, say(remainder)].compact.join(" ")
   end
-end
-
-def english_number(number)
-  return "zero" if number.zero?
-
-  say(number)
 end
