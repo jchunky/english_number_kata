@@ -34,14 +34,12 @@ NUMBERS = {
 }
 
 def english_number(n)
-  return "zero" if n == 0
+  return "zero" if n.zero?
 
   say(n)
 end
 
 def say(n)
-  return if n == 0
-
   case n
   when (..20)
     NUMBERS[n]
