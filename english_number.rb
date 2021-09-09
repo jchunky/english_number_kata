@@ -1,4 +1,4 @@
-NUMBERS = [
+NUMBERS = {
   1 => "one",
   2 => "two",
   3 => "three",
@@ -26,67 +26,21 @@ NUMBERS = [
   70 => "seventy",
   80 => "eighty",
   90 => "ninety",
-]
+}
 
-ONESPLACE = %w[
-  one
-  two
-  three
-  four
-  five
-  six
-  seven
-  eight
-  nine
-]
-TENSPLACE = %w[
-  ten
-  twenty
-  thirty
-  forty
-  fifty
-  sixty
-  seventy
-  eighty
-  ninety
-]
-TEENAGERS = %w[
-  eleven
-  twelve
-  thirteen
-  fourteen
-  fifteen
-  sixteen
-  seventeen
-  eighteen
-  nineteen
-]
+def english_number(n)
+  return "zero" if n == 0
 
-def english_number(number)
-  return "zero" if number == 0
+  say(n)
+end
 
-  numString = ""
-  left = number
-  write = left / 100
-  left -= write * 100
-  if write > 0
-    hundreds = english_number write
-    numString = "#{numString}#{hundreds} hundred"
-    numString = "#{numString} " if left > 0
+def say(n)
+  case n
+  when (..20)
+    NUMBERS[n]
+  when (..99)
+    [NUMBERS[n.truncate(-1)], NUMBERS[n % 10]].compact.join("-")
+  else
+    [say(n / 100), "hundred", say(n % 100)].compact.join(" ")
   end
-  write = left / 10
-  left -= write * 10
-  if write > 0
-    if (write == 1) && (left > 0)
-      numString += TEENAGERS[left - 1]
-      left = 0
-    else
-      numString += TENSPLACE[write - 1]
-    end
-    numString = "#{numString}-" if left > 0
-  end
-  write = left
-  left = 0
-  numString += ONESPLACE[write - 1] if write > 0
-  numString
 end
