@@ -28,19 +28,19 @@ NUMBERS = {
   90 => "ninety",
 }
 
-def english_number(number)
-  return "zero" if number == 0
+def english_number(n)
+  return "zero" if n == 0
 
-  say(number)
+  say(n)
 end
 
-def say(number)
-  case number
+def say(n)
+  case n
   when (..20)
-    NUMBERS[number]
+    NUMBERS[n]
   when (..99)
-    [NUMBERS[number.truncate(-1)], NUMBERS[number % 10]].compact.join("-")
+    [NUMBERS[n.truncate(-1)], NUMBERS[n % 10]].compact.join("-")
   else
-    [say(number / 100), "hundred", say(number % 100)].compact.join(" ")
+    [say(n / 100), "hundred", say(n % 100)].compact.join(" ")
   end
 end
